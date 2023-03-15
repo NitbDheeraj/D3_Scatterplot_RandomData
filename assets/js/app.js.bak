@@ -9,7 +9,7 @@ var margin = {
   left: 100
 };
 
-var searchBox = d3.select("#search");
+var searchBox = document.querySelector("#search");
 
 
 var width = svgWidth - margin.left - margin.right;
@@ -389,47 +389,19 @@ d3.csv("assets/data/data.csv").then(function(healthData, err){
   
   // add event listener to the search box
 searchBox.on("blur", function() {
-  var searchQuery = this.value; // get the search query from the input box
-
-  // filter the data based on the search query
+ // Get the search term entered by the user
+  var searchTerm = d3.select(this).property("value").toLowerCase();
+  
+  // Filter the data to find matching data points
   var filteredData = healthData.filter(function(d) {
-    return d.Name.toLowerCase().indexOf(searchQuery.toLowerCase()) > -1; // filter based on name field
+    return d.Name.toLowerCase().includes(searchTerm);
   });
   
-   if (circles.length > 0 ) {
-	  window.alert(circles.length);
-  }
-  else{window.alert("not found :(");}
+  // Highlight the matching data points
+  circlesGroup.classed("highlighted", function(d) {
+    return filteredData.includes(d);
+  });
   
-
-  
-/*
-  
-  // update the scatter plot with the filtered data
-  var circles = chartGroup.selectAll("circle")
-    .data(filteredData, function(d) { return d.Name; }); // use the 'Name' field as the key
-  
-    circles.enter()
-    .append("circle")
-    .merge(circles)
-    .attr("cx", function(d) { return xScale(d.x); })
-    .attr("cy", function(d) { return yScale(d.y); })
-    .attr("r", 15)
-    .style("fill", "blue")
-    .classed("highlighted", function(d) { return d.Name.toLowerCase().indexOf(searchQuery.toLowerCase()) > -1; }); // add class to highlighted data points
-
-
-  // remove the highlight class from non-matching data points
-  chartGroup.selectAll("circle:not(.highlighted)")
-    .classed("highlighted", false);
-
-  circles.exit()
-    .remove();
-  
- 
-
-
-	*/
 });
 
 }).catch(function (error) {

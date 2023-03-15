@@ -75,3 +75,9 @@
   height: 100%;
 }
 
+.highlighted {
+  fill: red;
+  stroke: black;
+  stroke-width: 2px;
+}
+

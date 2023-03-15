@@ -76,8 +76,8 @@
 }
 
 .highlighted {
-  fill: yellow;
-  stroke: black;
+  fill: black;
+  stroke: red;
   stroke-width: 2px;
 }
 
