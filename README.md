@@ -1,4 +1,5 @@
-
+# Data-Journalism
+Analysis of health risks facing particular demographics using D3
 
 ## Scatter Plot
 The app.js contains code for a scatter plot that represents each state with circle elements. The scatter plot values are pulled in the data from data.csv by using the d3.csv function. 

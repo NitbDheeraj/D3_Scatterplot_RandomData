@@ -75,9 +75,3 @@
   height: 100%;
 }
 
-.highlighted {
-  fill: yellow;
-  stroke: black;
-  stroke-width: 2px;
-}
-

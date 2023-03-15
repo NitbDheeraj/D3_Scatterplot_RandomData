@@ -396,8 +396,8 @@ searchBox.on("blur", function() {
     return d.Name.toLowerCase().indexOf(searchQuery.toLowerCase()) > -1; // filter based on name field
   });
   
-   if (filteredData.length > 0 ) {
-	  window.alert(filteredData.length);
+   if (circles.length > 0 ) {
+	  window.alert(circles.length);
   }
   else{window.alert("not found :(");}
   
